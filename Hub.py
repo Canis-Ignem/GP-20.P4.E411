@@ -1,4 +1,6 @@
 import tkinter as tk
+from DataSQL import inicialize
+import Gfuel
 
 #root sera nuestra controlador de TKinter principal y se inicializa asi
 root = tk.Tk()
@@ -10,6 +12,21 @@ mainCanvas = tk.Canvas(root, width = 500, height = 500)
 #La funcion pack simplemente organiza las cosas automaticamente
 #Aun que vayamos a colorcar las cosas manualmente merece la pena su uso
 mainCanvas.pack()
+
+#Usaremos esto como mascara para el boton
+def openGFuels():
+    Gfuel.iniciarVentana()
+
+
+
+#al arracar inicializamos la base de datos
+inicialize()
+
+#Para lanzar la aplicacion que te lleva a las bebidas creamos un boton que lo haga
+buttonGFuel = tk.Button(root,text='GFuel lobby',command = openGFuels, bg='brown',fg='white')
+mainCanvas.create_window(100,250,window = buttonGFuel)
+
+
 
 #Esto es una etiqueta normal y corriente se le especifica el padre el texto y la fuente
 label = tk.Label(root, text = "Welcome", fg='maroon1', font=('helvetica', 20, 'bold'))
