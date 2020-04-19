@@ -75,13 +75,13 @@ def add(t):
     query('INSERT INTO gfuel VALUES (?)',text)
     gFuel.append(text)
     
-def eliminar(t):
-    try:
+def eliminar(t,l):
+    
         text = t.get()
         text = text +" \n"
         query('DELETE FROM gfuel WHERE name = ?', text)
-    except:
-        print("No existe ese sabor")
+        l.configure(text = 'Sabor eliminado')
+    
     
 
 def iniciarVentana():
@@ -104,10 +104,11 @@ def iniciarVentana():
     
     #ejecuta la funcion de añadir un sabor a la base de datos usando lo escrito por el usuario
     addButton = tk.Button(gfuelWindow,text= 'Nuevo GFuel', command = lambda: add(textArea), bg='brown',fg='white' )
-    canvas1.create_window(175,210, window = addButton)
+    canvas1.create_window(75,210, window = addButton)
     
     #Boton para eliminar uno de los sabores ya insertados usando la misma ventana de escritura que el add
-    delButton = tk.Button(gfuelWindow,text= 'Borrar GFuel', command = lambda: eliminar(textArea), bg='brown',fg='white' )
-    canvas1.create_window(200,210, window = addButton)
+    delButton = tk.Button(gfuelWindow,text= 'Borrar GFuel', command = lambda: eliminar(textArea,label1), bg='brown',fg='white' )
+    canvas1.create_window(275,210, window = delButton)
+    
     #Usando mainloop volvemos a conseguir que esta ventana sea independiente de las otras
     gfuelWindow.mainloop()

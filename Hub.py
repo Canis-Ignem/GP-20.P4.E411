@@ -1,6 +1,7 @@
 import tkinter as tk
 from DataSQL import inicialize
 import Gfuel
+import Calendar
 
 #root sera nuestra controlador de TKinter principal y se inicializa asi
 root = tk.Tk()
@@ -13,9 +14,13 @@ mainCanvas = tk.Canvas(root, width = 500, height = 500)
 #Aun que vayamos a colorcar las cosas manualmente merece la pena su uso
 mainCanvas.pack()
 
-#Usaremos esto como mascara para el boton
+#Usaremos esto como mascara para el boton de los gfuels
 def openGFuels():
     Gfuel.iniciarVentana()
+
+#Usaremos esto como mascara para el boton del calendario  
+def openCalendar():
+    Calendar.inicicializeCalendar()
 
 
 
@@ -26,7 +31,9 @@ inicialize()
 buttonGFuel = tk.Button(root,text='GFuel lobby',command = openGFuels, bg='brown',fg='white')
 mainCanvas.create_window(100,250,window = buttonGFuel)
 
-
+#Para lanzar la aplicacion de calendario
+calendarButton = tk.Button(root,text='Calendar lobby',command = openCalendar, bg='green',fg='white')
+mainCanvas.create_window(400,250,window = calendarButton)
 
 #Esto es una etiqueta normal y corriente se le especifica el padre el texto y la fuente
 label = tk.Label(root, text = "Welcome", fg='maroon1', font=('helvetica', 20, 'bold'))
