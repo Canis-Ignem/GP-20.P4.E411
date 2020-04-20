@@ -95,7 +95,7 @@ def iniciarVentana():
     label1 = tk.Label(gfuelWindow, text = "Tu GFuel aparecera aqui", fg='maroon1', font=('helvetica', 12, 'bold'))
     canvas1.create_window(175, 75, window=label1)
     #Este boton ejecutara la funcion que elige el sabor, usamos ' lambda : ' en command para que nos deje pasar parametros
-    button1 = tk.Button(gfuelWindow,text='Dame mi rico GFuel',command = lambda : randomGFuel(label1), bg='blue',fg='white')
+    button1 = tk.Button(gfuelWindow,text='Dame mi GFuel',command = lambda : randomGFuel(label1), bg='blue',fg='white')
     canvas1.create_window(175,115,window = button1)
     
     #un entry es un sitio donde el usuario podra escribir, este se usara para añadir sabores a la base de datos
