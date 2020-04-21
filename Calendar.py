@@ -21,9 +21,9 @@ def insertDate(de,label1,combo):
     #commit para que se guarden los cambios
     DataSQL.conn.commit()
 
-def inicializeCalendar():
+def inicicializeCalendar():
     
-    calendar = tk.TK()
+    calendar = tk.Tk()
     calendar.title("Calendar")
     
     #Vinculamos nuestro estilo con la ventana
