@@ -1,8 +1,10 @@
 import tkinter as tk
 from tkinter import ttk
-from tkcalendar import DateEntry
-from datetime import date
+import tkcalendar
+import datetime
 import DataSQL
+from babel.dates import format_date, parse_date, get_day_names, get_month_names
+from babel.numbers import *  # Additional Import
 
 
 def conteo(label1, label2, label3):
@@ -68,7 +70,8 @@ def inicicializeCalendar():
     
     #Este es el codigo que nos personaliza el calendario a nuestro gusto
     #Podemos ejegir el formato de la fecha los colores y como interactua con el raton
-    cal = DateEntry(calendar, year=date.today().year, month=date.today().month, day=date.today().day,
+    
+    cal = tkcalendar.DateEntry(calendar, year=datetime.date.today().year, month=datetime.date.today().month, day=datetime.date.today().day,
                  selectbackground='gray80',
                  selectforeground='black',
                  normalbackground='white',
@@ -86,6 +89,7 @@ def inicicializeCalendar():
                  headersforeground='gray70',
                  date_pattern='dd/MM/yy'
                  )
+    
     # lo metemos en la ventana
     calendarCanvas.create_window(250,50,window = cal )
     
