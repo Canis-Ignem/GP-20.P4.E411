@@ -9,9 +9,9 @@ def conteo(label1, label2, label3):
     
     e =DataSQL.query1Res('SELECT COUNT(exito) FROM exitos WHERE exito = "E"')
     f =DataSQL.query1Res('SELECT COUNT(exito) FROM exitos WHERE exito = "F"')
-    label1.configure(text = e, fg='green2',font=('helvetica', 20, 'bold') )
-    label2.configure(text = '/', fg='black',font=('helvetica', 20, 'bold') )
-    label3.configure(text = f, fg='red2',font=('helvetica', 20, 'bold') )
+    label1.configure(text = e )
+    label2.configure(text = '/' )
+    label3.configure(text = f )
     
 def insertDate(de,label1,label2,label3,combo):
     #de la fecha cogemo en modo string cada apartado
@@ -44,11 +44,19 @@ def inicicializeCalendar():
     
     #Una etiqueta para mostrar la fecha
     label1 = tk.Label(calendar)
-    calendarCanvas.create_window(280,350,window= label1)
+    calendarCanvas.create_window(260,350,window= label1)
+    label1.configure( fg='green2',font=('helvetica', 20, 'bold') )
+    
+    
+    
     label2 = tk.Label(calendar)
     calendarCanvas.create_window(300,350,window= label2)
+    label2.configure( fg='black',font=('helvetica', 28, 'bold') )
+    
     label3 = tk.Label(calendar)
-    calendarCanvas.create_window(320,350,window= label3)
+    calendarCanvas.create_window(340,350,window= label3)
+    label3.configure( fg='red2',font=('helvetica', 20, 'bold') )
+    
     conteo(label1,label2,label3)
     
     #Un combobos es basicamente una lista desplegable esta nos permitira marcar los
