@@ -60,3 +60,6 @@ def query(sentence ,data):
         
     conn.commit()
 
+def query1Res(sentence):
+    c.execute(sentence)
+    return c.fetchone()

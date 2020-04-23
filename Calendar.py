@@ -5,8 +5,15 @@ from datetime import date
 import DataSQL
 
 
-
-def insertDate(de,label1,combo):
+def conteo(label1, label2, label3):
+    
+    e =DataSQL.query1Res('SELECT COUNT(exito) FROM exitos WHERE exito = "E"')
+    f =DataSQL.query1Res('SELECT COUNT(exito) FROM exitos WHERE exito = "F"')
+    label1.configure(text = e, fg='green2',font=('helvetica', 20, 'bold') )
+    label2.configure(text = '/', fg='black',font=('helvetica', 20, 'bold') )
+    label3.configure(text = f, fg='red2',font=('helvetica', 20, 'bold') )
+    
+def insertDate(de,label1,label2,label3,combo):
     #de la fecha cogemo en modo string cada apartado
     d =str(de.get_date().day) 
     m =str(de.get_date().month)
@@ -18,6 +25,7 @@ def insertDate(de,label1,combo):
     #pasandole los parametros aparte usando nuestra funcion de la base de datos
     DataSQL.query("INSERT INTO exitos VALUES (?, ?, ?, ?)",(d,m,y,e))
     
+    conteo(label1,label2,label3)
     #commit para que se guarden los cambios
     DataSQL.conn.commit()
 
@@ -35,8 +43,13 @@ def inicicializeCalendar():
     calendarCanvas = tk.Canvas(calendar,width= 500,height = 500)
     
     #Una etiqueta para mostrar la fecha
-    label = tk.Label(calendar,text='la fecha saldra aqui')
-    calendarCanvas.create_window(300,300,window= label)
+    label1 = tk.Label(calendar)
+    calendarCanvas.create_window(280,350,window= label1)
+    label2 = tk.Label(calendar)
+    calendarCanvas.create_window(300,350,window= label2)
+    label3 = tk.Label(calendar)
+    calendarCanvas.create_window(320,350,window= label3)
+    conteo(label1,label2,label3)
     
     #Un combobos es basicamente una lista desplegable esta nos permitira marcar los
     #dias como exito o fracaso y de esta manera hacernos responsables de lo que hacemos
@@ -69,7 +82,7 @@ def inicicializeCalendar():
     calendarCanvas.create_window(250,50,window = cal )
     
     #Un boton que ejecute la funcion de insercion a la BD
-    aceptB= tk.Button(calendar,text='insert',command = lambda: insertDate(cal,label,exitoFracaso))
+    aceptB= tk.Button(calendar,text='insert',command = lambda: insertDate(cal,label1,label2,label3,exitoFracaso))
     calendarCanvas.create_window(100,400, window=aceptB)
     
     #organizar todo
