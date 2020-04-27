@@ -58,9 +58,10 @@ def notas(de):
     text = str(DataSQL.query1ResParams("SELECT tareas FROM exitos WHERE dday = ? and mmonth = ? and  yyear = ?",(d,m,y)))
     #Al insertar le quitamos los parentesis y comillas y demases que viene con el cambio a str ('....\n')
     text = text[2:-5];
-    lines = text.split("\n")
+    lines = text.split('\\n')
     for i in range(len(lines)):
         choresT.insert(tk.INSERT,lines[i])
+        choresT.insert(tk.INSERT,"\n")
         
     #Protocolo de cerrado de la ventana
     chores.protocol("WM_DELETE_WINDOW",lambda: closing(chores,d,m,y,choresT.get("1.0",tk.END) ) )
