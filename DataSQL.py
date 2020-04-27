@@ -20,7 +20,7 @@ def inicialize():
         c.execute('''CREATE TABLE IF NOT EXISTS gfuel
                     (name text PRIMARY KEY)''')
         c.execute('''CREATE TABLE IF NOT EXISTS exitos
-                    (dday text, mmonth text, yyear text, exito text)
+                    (dday text, mmonth text, yyear text, exito text,tareas text)
                   ''')
 
         #Gfuel es solo una bebida que me gusta a mi y viene en sabores podria cambiarse por comidas o cualquier otra cosa
@@ -63,3 +63,19 @@ def query(sentence ,data):
 def query1Res(sentence):
     c.execute(sentence)
     return c.fetchone()
+
+def query1ResParams(sentence, data):
+    if type(data) is str:
+        c.execute( sentence , (data,))
+         
+    else:
+        c.execute( sentence , data)
+        
+    conn.commit()
+    return c.fetchone()
+
+#conn = sql.connect('DataBase.db')
+#c = conn.cursor()
+#c.execute("DROP TABLE exitos")
+#c.execute("DROP TABLE gfuel")
+#conn.commit()

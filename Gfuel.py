@@ -69,11 +69,12 @@ def randomGFuel(label1):
     return a
 
 #añade otro sabor a la base de datos
-def add(t):
+def add(t,l):
     text = t.get()
     text = text +" \n"
     query('INSERT INTO gfuel VALUES (?)',text)
     gFuel.append(text)
+    l.configure(text = 'Sabor añadido')
     
 def eliminar(t,l):
     
@@ -92,7 +93,7 @@ def iniciarVentana():
     canvas1.pack()
     
     #Etiqueta donde aparecera el sabor
-    label1 = tk.Label(gfuelWindow, text = "Tu GFuel aparecera aqui", fg='maroon1', font=('helvetica', 12, 'bold'))
+    label1 = tk.Label(gfuelWindow, text = "Tu GFuel aparecera aqui", fg='blue', font=('helvetica', 12, 'bold'))
     canvas1.create_window(175, 75, window=label1)
     #Este boton ejecutara la funcion que elige el sabor, usamos ' lambda : ' en command para que nos deje pasar parametros
     button1 = tk.Button(gfuelWindow,text='Dame mi GFuel',command = lambda : randomGFuel(label1), bg='blue',fg='white')
