@@ -73,7 +73,6 @@ def add(t,l):
     text = t.get()
     text = text +" \n"
     query('INSERT INTO gfuel VALUES (?)',text)
-    gFuel.append(text)
     l.configure(text = 'Sabor añadido')
     
 def eliminar(t,l):
