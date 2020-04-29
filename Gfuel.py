@@ -104,7 +104,7 @@ def iniciarVentana():
     canvas1.create_window(175,170,window = textArea)
     
     #ejecuta la funcion de añadir un sabor a la base de datos usando lo escrito por el usuario
-    addButton = tk.Button(gfuelWindow,text= 'Nuevo GFuel', command = lambda: add(textArea), bg='brown',fg='white' )
+    addButton = tk.Button(gfuelWindow,text= 'Nuevo GFuel', command = lambda: add(textArea,label1), bg='brown',fg='white' )
     canvas1.create_window(75,210, window = addButton)
     
     #Boton para eliminar uno de los sabores ya insertados usando la misma ventana de escritura que el add
