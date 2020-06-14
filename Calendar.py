@@ -71,6 +71,7 @@ def notas(de):
 def inicicializeCalendar():
     calendar = tk.Tk()
     calendar.title("Calendar")
+    DataSQL.inicialize()
     
     #Vinculamos nuestro estilo con la ventana
     style = ttk.Style(calendar)
@@ -149,3 +150,5 @@ def inicicializeCalendar():
     calendarCanvas.pack()
     #main loop para que sea independiente
     calendar.mainloop()
+    
+inicicializeCalendar()
